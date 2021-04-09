@@ -1,9 +1,21 @@
 <script>
 	import AdjacencyGraph from './CirclesAdjacencyGraph.svelte';
+	import TransferGraph from './CirclesTransferGraph.svelte';
+	import TransfersFinder from './CirclesTransfersFinder.svelte';
+
+	import { formatValue } from './utility.js';
+
+	let maxValue = '0';
+	let transfers = [];
 </script>
 
 <main>
+	<TransfersFinder bind:maxValue={maxValue} bind:transfers={transfers}></TransfersFinder>
+	<hr/>
+	<p>Visualizing flow of {formatValue(maxValue)}</p>
+	<TransferGraph transfers={transfers}></TransferGraph>
 	<AdjacencyGraph></AdjacencyGraph>
+	<hr/>
 </main>
 
 <style>
