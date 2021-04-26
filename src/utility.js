@@ -16,6 +16,8 @@ export let toAddress = async function(input) {
 };
 
 export let formatValue = function(value) {
+    if (typeof value != typeof '')
+        value = '' + value;
     while (value.length <= 18)
         value = '0' + value;
     return value.substr(0, value.length - 18) + '.' + value.substr(value.length - 18, 2);
